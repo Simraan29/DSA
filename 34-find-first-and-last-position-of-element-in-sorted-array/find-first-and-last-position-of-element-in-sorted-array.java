@@ -9,15 +9,15 @@ public class Solution {
     // Binary search for first occurrence
     public static int findFirst(int[] nums, int target) {
         int index = -1;
-        int low = 0, high = nums.length - 1;
+        int start = 0, end = nums.length - 1;
 
-        while (low <= high) {
-            int mid = low + (high - low) / 2;
+        while (start <= end) {
+            int mid = start + (end - start) / 2;
 
             if (nums[mid] >= target) {
-                high = mid - 1;
+                end = mid - 1;
             } else {
-                low = mid + 1;
+                start = mid + 1;
             }
 
             if (nums[mid] == target) index = mid;
@@ -29,15 +29,15 @@ public class Solution {
     // Binary search for last occurrence
     public static int findLast(int[] nums, int target) {
         int index = -1;
-        int low = 0, high = nums.length - 1;
+        int start = 0, end = nums.length - 1;
 
-        while (low <= high) {
-            int mid = low + (high - low) / 2;
+        while (start <= end) {
+            int mid = end + (start - end) / 2;
 
             if (nums[mid] <= target) {
-                low = mid + 1;
+                start = mid + 1;
             } else {
-                high = mid - 1;
+                end = mid - 1;
             }
 
             if (nums[mid] == target) index = mid;
