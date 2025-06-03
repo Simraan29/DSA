@@ -1,6 +1,6 @@
 class Solution {
     public int[] sortedSquares(int[] nums) {
-      /*  int n = nums.length;
+      int n = nums.length;
         int[] result = new int[n];
 
         int left = 0;
@@ -21,11 +21,17 @@ class Solution {
             index--;
         }
 
-        return result; */
+        return result; 
         
     
 // ye two pointer approach hai
+ 
+}
+}
 
+
+
+/*
 // hum isko brute force se bhi ker sakte hai
 
 int n= nums.length;
@@ -35,6 +41,4 @@ for(int i=0; i<n; i++){
      result[i] = nums[i] * nums[i];
 }
 Arrays.sort(result);
-return result;
-}
-}
+return result; */
