@@ -1,56 +1,51 @@
-public class Solution {
+class Solution {
+    public int[] searchRange(int[] nums, int target) {
 
-    public static int[] searchRange(int[] nums, int target) {
         int first = findFirst(nums, target);
         int last = findLast(nums, target);
-        return new int[] {first, last};
+
+        return new int[]{first, last};
     }
 
-    // Binary search for first occurrence
-    public static int findFirst(int[] nums, int target) {
-        int index = -1;
-        int start = 0, end = nums.length - 1;
+    int findFirst(int[] nums, int target){
+        int left = 0, right = nums.length - 1;
+        int ans = -1;
 
-        while (start <= end) {
-            int mid = start + (end - start) / 2;
+        while(left <= right){
+            int mid = (left + right) / 2;
 
-            if (nums[mid] >= target) {
-                end = mid - 1;
-            } else {
-                start = mid + 1;
+            if(nums[mid] == target){
+                ans = mid;
+                right = mid - 1; // left side jao
             }
-
-            if (nums[mid] == target) index = mid;
-        }
-
-        return index;
-    }
-
-    // Binary search for last occurrence
-    public static int findLast(int[] nums, int target) {
-        int index = -1;
-        int start = 0, end = nums.length - 1;
-
-        while (start <= end) {
-            int mid = end + (start - end) / 2;
-
-            if (nums[mid] <= target) {
-                start = mid + 1;
-            } else {
-                end = mid - 1;
+            else if(nums[mid] < target){
+                left = mid + 1;
             }
-
-            if (nums[mid] == target) index = mid;
+            else{
+                right = mid - 1;
+            }
         }
-
-        return index;
+        return ans;
     }
 
-  /*  public static void main(String[] args) {
-        int[] nums = {5, 7, 7, 8, 8, 10};
-        int target = 8;
+    int findLast(int[] nums, int target){
+        int left = 0, right = nums.length - 1;
+        int ans = -1;
 
-        int[] result = searchRange(nums, target);
-        System.out.println("First and Last Position: [" + result[0] + ", " + result[1] + "]");
-    }*/
+        while(left <= right){
+            int mid = (left + right) / 2;
+
+            if(nums[mid] == target){
+                ans = mid;
+                left = mid + 1; // right side jao
+            }
+            else if(nums[mid] < target){
+                left = mid + 1;
+            }
+            else{
+                right = mid - 1;
+            }
+        }
+        return ans;
+    }
 }
